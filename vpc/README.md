@@ -9,6 +9,8 @@ A VPC is a private, isolated network you create within a cloud provider’s infr
 
 ## VPC 
 
+![VPC Network Flow](vpc1.png)
+
 **Region** - Select any AWS region that has multiple Availability Zones (3 or 6).  
 
 **Availability Zones** - Depending on the number of servers you require, you first select an appropriate IP address range for your VPC. This range is defined using a CIDR block. You can then divide this range into multiple subnets as needed. Each subnet can be assigned to a specific Availability Zone or distributed across zones.  
