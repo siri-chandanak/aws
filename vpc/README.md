@@ -53,4 +53,6 @@ Both Network Access Control Lists (NACLs) and Security Groups are used to contro
 
 NACLs support both allow and deny rules, enabling you to explicitly block specific traffic. Security groups only allow traffic; implicitly deny everything else.  
 
+**Traffic Flow:**
+
 **Request → AWS → IG → Router → NACL → SG → Server → Firewall → End Application**  
