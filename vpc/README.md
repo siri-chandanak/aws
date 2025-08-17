@@ -66,6 +66,9 @@ NACLs support both allow and deny rules, enabling you to explicitly block specif
 VPCs are isolated by default, but AWS provides mechanisms for inter-VPC communication:  
 
 ### 1. **VPC Peering**
+
+![VPC Peering](peering.png)
+
 - Connects two VPCs using private IP addresses.  
 - Allows resources in different VPCs to communicate as if they are in the same network.  
 - Peering is **non-transitive** (if VPC-A is peered with VPC-B, and VPC-B with VPC-C, A cannot talk to C).  
@@ -88,10 +91,3 @@ VPCs are isolated by default, but AWS provides mechanisms for inter-VPC communic
 - VPN uses encrypted tunnels over the internet.  
 - Direct Connect offers a dedicated private connection.  
 
----
-
-### 🔄 Diagram: VPC Peering Example
-
-![VPC Peering](vpc_peering.png)
-
-*(In this example, VPC-A and VPC-B communicate through a peering connection, while VPC-C is connected via Transit Gateway.)*  
