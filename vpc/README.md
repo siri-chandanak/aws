@@ -34,7 +34,7 @@ A VPC is a private, isolated network you create within a cloud provider’s infr
 
 ## How to communicate with VPC or communication within VPC  
 
-<img src="vpc2.png" alt="VPC" width="800"/>
+<img src="vpc2.png" alt="VPC" width="700"/>
 
 **Routers, IG, NAT (Network Address Translation), NACL (Network Access Control List)**  
 
@@ -69,25 +69,30 @@ VPCs are isolated by default, but AWS provides mechanisms for inter-VPC communic
 
 <img src="peering.png" alt="VPC Peering" width="300"/>
 
-- Connects two VPCs using private IP addresses.  
-- Allows resources in different VPCs to communicate as if they are in the same network.  
-- Peering is **non-transitive** (if VPC-A is peered with VPC-B, and VPC-B with VPC-C, A cannot talk to C).  
-- Best for small-scale setups with limited interconnections.  
+- **Definition**: A networking connection between two VPCs that enables traffic routing using private IPv4 or IPv6 addresses.  
+- **Use Case**: Best suited for simple, one-to-one communication between VPCs.  
+- **Limitations**:  
+  - Peering does not support transitive routing (if VPC-A peers with VPC-B, and VPC-B peers with VPC-C, A cannot automatically reach C).  
+  - Each peering connection must be established individually.   
 
 ### 2. **Transit Gateway (TGW)**
-- A central hub that connects multiple VPCs and on-premises networks.  
-- Scalable solution for managing complex network topologies.  
-- Supports **transitive routing** (VPC-A → TGW → VPC-B → VPC-C).  
-- Recommended for enterprise-scale architectures.  
 
-### 3. **VPC Endpoints**
-- Enables private connectivity between VPCs and AWS services **without using the public internet**.  
-- Two types:
-  - **Interface Endpoint** (powered by PrivateLink).  
-  - **Gateway Endpoint** (for S3, DynamoDB).  
+<img src="transit.png" alt="VPC Peering" width="300"/>
 
-### 4. **VPN & Direct Connect**
-- For communication between **on-premises data centers** and VPCs.  
-- VPN uses encrypted tunnels over the internet.  
-- Direct Connect offers a dedicated private connection.  
+- **Definition**: A central hub that enables communication between multiple VPCs, on-premises networks, or even across regions.  
+- **Use Case**: Best for large-scale architectures with many VPCs (hub-and-spoke model).  
+- **Advantages**:  
+  - Simplifies complex peering relationships.  
+  - Supports transitive routing.  
+  - Scales well with growing cloud networks.  
 
+### 📊 Comparison  
+
+| Feature            | VPC Peering                  | Transit Gateway                |
+|--------------------|------------------------------|--------------------------------|
+| Scale              | Small (few VPCs)             | Large (many VPCs)              |
+| Routing            | No transitive routing        | Supports transitive routing    |
+| Setup              | Individual connections       | Centralized hub-and-spoke      |
+| Best Use Case      | Simple connections           | Enterprise-scale networking    |
+
+---
