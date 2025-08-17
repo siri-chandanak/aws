@@ -34,7 +34,7 @@ A VPC is a private, isolated network you create within a cloud provider’s infr
 
 ## How to communicate with VPC or communication within VPC  
 
-<img src="vpc2.png" alt="VPC"/>
+<img src="vpc2.png" alt="VPC" width="800"/>
 
 **Routers, IG, NAT (Network Address Translation), NACL (Network Access Control List)**  
 
