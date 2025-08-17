@@ -60,3 +60,38 @@ NACLs support both allow and deny rules, enabling you to explicitly block specif
 **Traffic Flow:**
 
 **Request → AWS → IG → Router → NACL → SG → Server → Firewall → End Application**  
+
+## Communication among VPCs  
+
+VPCs are isolated by default, but AWS provides mechanisms for inter-VPC communication:  
+
+### 1. **VPC Peering**
+- Connects two VPCs using private IP addresses.  
+- Allows resources in different VPCs to communicate as if they are in the same network.  
+- Peering is **non-transitive** (if VPC-A is peered with VPC-B, and VPC-B with VPC-C, A cannot talk to C).  
+- Best for small-scale setups with limited interconnections.  
+
+### 2. **Transit Gateway (TGW)**
+- A central hub that connects multiple VPCs and on-premises networks.  
+- Scalable solution for managing complex network topologies.  
+- Supports **transitive routing** (VPC-A → TGW → VPC-B → VPC-C).  
+- Recommended for enterprise-scale architectures.  
+
+### 3. **VPC Endpoints**
+- Enables private connectivity between VPCs and AWS services **without using the public internet**.  
+- Two types:
+  - **Interface Endpoint** (powered by PrivateLink).  
+  - **Gateway Endpoint** (for S3, DynamoDB).  
+
+### 4. **VPN & Direct Connect**
+- For communication between **on-premises data centers** and VPCs.  
+- VPN uses encrypted tunnels over the internet.  
+- Direct Connect offers a dedicated private connection.  
+
+---
+
+### 🔄 Diagram: VPC Peering Example
+
+![VPC Peering](vpc_peering.png)
+
+*(In this example, VPC-A and VPC-B communicate through a peering connection, while VPC-C is connected via Transit Gateway.)*  
