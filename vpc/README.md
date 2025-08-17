@@ -67,7 +67,7 @@ VPCs are isolated by default, but AWS provides mechanisms for inter-VPC communic
 
 ### 1. **VPC Peering**
 
-![VPC Peering](peering.png)
+<img src="peering.png" alt="VPC Peering" width="500"/>
 
 - Connects two VPCs using private IP addresses.  
 - Allows resources in different VPCs to communicate as if they are in the same network.  
