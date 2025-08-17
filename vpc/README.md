@@ -67,7 +67,7 @@ VPCs are isolated by default, but AWS provides mechanisms for inter-VPC communic
 
 ### 1. **VPC Peering**
 
-<img src="peering.png" alt="VPC Peering" width="300"/>
+<img src="peering.png" alt="VPC Peering" width="500"/>
 
 - **Definition**: A networking connection between two VPCs that enables traffic routing using private IPv4 or IPv6 addresses.  
 - **Use Case**: Best suited for simple, one-to-one communication between VPCs.  
@@ -77,7 +77,7 @@ VPCs are isolated by default, but AWS provides mechanisms for inter-VPC communic
 
 ### 2. **Transit Gateway (TGW)**
 
-<img src="transit.png" alt="VPC Peering" width="300"/>
+<img src="transit.png" alt="VPC Peering" width="500"/>
 
 - **Definition**: A central hub that enables communication between multiple VPCs, on-premises networks, or even across regions.  
 - **Use Case**: Best for large-scale architectures with many VPCs (hub-and-spoke model).  
