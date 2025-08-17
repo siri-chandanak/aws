@@ -9,7 +9,7 @@ A VPC is a private, isolated network you create within a cloud provider’s infr
 
 ## VPC 
 
-![VPC Network Flow](vpc1.png)
+<img src="vpc1.png" alt="VPC" width="300"/>
 
 **Region** - Select any AWS region that has multiple Availability Zones (3 or 6).  
 
@@ -34,7 +34,7 @@ A VPC is a private, isolated network you create within a cloud provider’s infr
 
 ## How to communicate with VPC or communication within VPC  
 
-![VPC Network Flow](vpc2.png)
+<img src="vpc2.png" alt="VPC" width="300"/>
 
 **Routers, IG, NAT (Network Address Translation), NACL (Network Access Control List)**  
 
@@ -67,7 +67,7 @@ VPCs are isolated by default, but AWS provides mechanisms for inter-VPC communic
 
 ### 1. **VPC Peering**
 
-<img src="peering.png" alt="VPC Peering" width="500"/>
+<img src="peering.png" alt="VPC Peering" width="300"/>
 
 - Connects two VPCs using private IP addresses.  
 - Allows resources in different VPCs to communicate as if they are in the same network.  
