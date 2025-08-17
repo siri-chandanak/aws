@@ -29,28 +29,32 @@ class StepFuncStack(Stack):
             code=_lambda.Code.from_asset("lambda")
         )
 
-        # Define a Step Function task for the first Lambda function
-        task1 = tasks.LambdaInvoke(
-            self, "Task1",
-            lambda_function=lambda_function1,
-            output_path="$.Payload"
-        )   
-        # Define a Step Function task for the second Lambda function
-        task2 = tasks.LambdaInvoke(            self, "Task2",
-            lambda_function=lambda_function2,
-            output_path="$.Payload"
-        )       
-        # Define the Step Function state machine
-        definition = task1.next(task2)  
-        state_machine = sfn.StateMachine(
-            self, "StateMachine",
-            definition=definition
-        )
+        #create a choice state 
+        #if input is integer, go to task1, else if input is string, go to task2, else go to fail state
+        #from task1 and task2, go to success state and then end the state machine
+        
+        success_state = sfn.Succeed(self, "SuccessState")
+        
+        fail_state = sfn.Fail(self, "FailState", error="InvalidInput", cause="Input must be a number or a string")
+        
+        choice_state = sfn.Choice(self, "ChoiceState") \
+            .when(sfn.Condition.is_numeric("$.input"), 
+                tasks.LambdaInvoke(self, "Task1",
+                lambda_function=lambda_function1,
+                output_path="$.Payload"
+            ).next(success_state)) \
+            .when(sfn.Condition.is_string("$.input"), 
+                tasks.LambdaInvoke(self, "Task2",
+                lambda_function=lambda_function2,
+                output_path="$.Payload"
+            ).next(success_state)) \
+            .otherwise(fail_state) 
+        
+        # Define the state machine, starting with the choice state
+        
+        state_machine_definition = choice_state
+        state_machine = sfn.StateMachine(self, "StateMachine",
+                                         definition_body=sfn.DefinitionBody.from_chainable(state_machine_definition),
+)
 
 
-
-        # example resource
-        # queue = sqs.Queue(
-        #     self, "StepFuncQueue",
-        #     visibility_timeout=Duration.seconds(300),
-        # )
