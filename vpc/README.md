@@ -34,6 +34,8 @@ A VPC is a private, isolated network you create within a cloud provider’s infr
 
 ## How to communicate with VPC or communication within VPC  
 
+![VPC Network Flow](vpc2.png)
+
 **Routers, IG, NAT (Network Address Translation), NACL (Network Access Control List)**  
 
 - **Internet Gateway**: This is present outside our VPC, which is connected to the public router. Any person will be able to access VPC via IG.  
