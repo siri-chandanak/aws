@@ -9,7 +9,7 @@ A VPC is a private, isolated network you create within a cloud provider’s infr
 
 ## VPC 
 
-<img src="vpc1.png" alt="VPC" width="300"/>
+<img src="vpc1.png" alt="VPC" width="500"/>
 
 **Region** - Select any AWS region that has multiple Availability Zones (3 or 6).  
 
@@ -34,7 +34,7 @@ A VPC is a private, isolated network you create within a cloud provider’s infr
 
 ## How to communicate with VPC or communication within VPC  
 
-<img src="vpc2.png" alt="VPC" width="300"/>
+<img src="vpc2.png" alt="VPC" width="500"/>
 
 **Routers, IG, NAT (Network Address Translation), NACL (Network Access Control List)**  
 
