@@ -1,0 +1,50 @@
+{
+  "Comment": "Order Processing Workflow",
+  "StartAt": "Pass",
+  "States": {
+    "Pass": {
+      "Type": "Pass",
+      "Next": "Parallel",
+      "Parameters": {
+        "Payload.$": "States.StringToJson($[0].body)"
+      }
+    },
+    "Parallel": {
+      "Type": "Parallel",
+      "Branches": [
+        {
+          "StartAt": "validateOrder",
+          "States": {
+            "validateOrder": {
+              "Type": "Task",
+              "InputPath": "$.Payload",
+              "Resource": "arn:aws:states:::lambda:invoke",
+              "OutputPath": "$.Payload",
+              "Parameters": {
+                "Payload.$": "$",
+                "FunctionName": "arn:aws:lambda:us-east-1:471112531497:function:validateOrder:$LATEST"
+              },
+              "End": true
+            }
+          }
+        },
+        {
+          "StartAt": "confirmOrder",
+          "States": {
+            "confirmOrder": {
+              "Type": "Task",
+              "Resource": "arn:aws:states:::lambda:invoke",
+              "OutputPath": "$.Payload",
+              "Parameters": {
+                "Payload.$": "$",
+                "FunctionName": "arn:aws:lambda:us-east-1:471112531497:function:confirmOrder:$LATEST"
+              },
+              "End": true
+            }
+          }
+        }
+      ],
+      "End": true
+    }
+  }
+}
