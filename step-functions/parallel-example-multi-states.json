@@ -1,0 +1,71 @@
+{
+  "Comment": "Order Processing Workflow",
+  "StartAt": "Pass",
+  "States": {
+    "Pass": {
+      "Type": "Pass",
+      "Next": "Parallel",
+      "Parameters": {
+        "Payload.$": "States.StringToJson($[0].body)"
+      }
+    },
+    "Parallel": {
+      "Type": "Parallel",
+      "Branches": [
+        {
+          "StartAt": "validateOrder1",
+          "States": {
+            "validateOrder1": {
+              "Type": "Task",
+              "Resource": "arn:aws:states:::lambda:invoke",
+              "OutputPath": "$.Payload",
+              "Parameters": {
+                "Payload.$": "$.Payload",
+                "FunctionName": "arn:aws:lambda:us-east-1:471112531497:function:validateOrder:$LATEST"
+              },
+              "End": true
+            }
+          }
+        },
+        {
+          "StartAt": "validateOrder2",
+          "States": {
+            "validateOrder2": {
+              "Type": "Task",
+              "Resource": "arn:aws:states:::lambda:invoke",
+              "InputPath": "$.Payload",
+              "OutputPath": "$.Payload",
+              "Parameters": {
+                "Payload.$": "$",
+                "FunctionName": "arn:aws:lambda:us-east-1:471112531497:function:validateOrder:$LATEST"
+              },
+              "Next": "validateOrder3"
+            },
+            "validateOrder3": {
+              "Type": "Task",
+              "Resource": "arn:aws:states:::lambda:invoke",
+              "OutputPath": "$.Payload",
+              "Parameters": {
+                "Payload.$": "$",
+                "FunctionName": "arn:aws:lambda:us-east-1:471112531497:function:validateOrder:$LATEST"
+              },
+              "End": true
+            }
+          }
+        }
+      ],
+      "Next": "confirmOrder"
+    },
+    "confirmOrder": {
+      "Type": "Task",
+      "Resource": "arn:aws:states:::lambda:invoke",
+      "InputPath": "$.[0]",
+      "OutputPath": "$.Payload",
+      "Parameters": {
+        "Payload.$": "$",
+        "FunctionName": "arn:aws:lambda:us-east-1:471112531497:function:confirmOrder:$LATEST"
+      },
+      "End": true
+    }
+  }
+}
