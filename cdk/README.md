@@ -34,13 +34,21 @@ Each project is contained within its own directory, with the following structure
 
 CDK/
 │── l1_construct/ # Example using L1 Constructs (low-level Cfn resources)
+
 │── l2_construct/ # Example using L2 Constructs (higher-level CDK abstractions)
+
 │── l3_construct/ # Example using L3 Constructs (patterns)
+
 │── lambda/ # Example Lambda function deployment with CDK
+
 │── multistack/ # Example of multiple stacks in a CDK app
+
 │── s3bucket/ # Example creating an S3 bucket
+
 │── s3bucket_lambda/ # Example S3 bucket and Lambda integration
+
 │── string-or-numbers-step-function/ # Example Step Function to check if input is string or number
+
 │── README.md # Documentation
 
 ## Commands to Get Started
