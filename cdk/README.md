@@ -63,6 +63,12 @@ After activating the virtual environment, install the required dependencies:
 ```bash
 pip install -r requirements.txt
 ```
+### Connect to AWS Account
+Ensure your AWS CLI is configured with the correct credentials and region. You can check your configuration with:
+```bash
+aws configure
+```
+
 ### Synthesize the CloudFormation Template
 To generate the CloudFormation template for your CDK application, run:
 ```bash
