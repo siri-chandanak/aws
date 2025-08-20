@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Cat Gallery</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+    }
+    .buttons {
+      margin-bottom: 20px;
+    }
+    button {
+      margin: 5px;
+      padding: 10px 20px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+    img {
+      max-width: 400px;
+      height: auto;
+      display: none;
+      border-radius: 10px;
+      box-shadow: 0px 4px 12px rgba(0,0,0,0.3);
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Cat Gallery 🐱</h1>
+
+  <!-- 9 Buttons -->
+  <div>
+    <button onclick="showImage('cat1.jpg')">Cat 1</button>
+    <button onclick="showImage('cat2.jpg')">Cat 2</button>
+    <button onclick="showImage('cat3.jpg')">Cat 3</button>
+    <button onclick="showImage('cat4.jpg')">Cat 4</button>
+    <button onclick="showImage('cat5.jpg')">Cat 5</button>
+    <button onclick="showImage('cat6.jpg')">Cat 6</button>
+    <button onclick="showImage('cat7.jpg')">Cat 7</button>
+    <button onclick="showImage('cat8.jpg')">Cat 8</button>
+    <button onclick="showImage('cat9.jpg')">Cat 9</button>
+    <button onclick="showImage('dog1.jpg')">Dog 1</button>
+    <button onclick="showImage('dog2.jpg')">Dog 2</button>
+  </div>
+
+  <!-- Image Display -->
+  <img id="catImage" src="" alt="Cat">
+
+  <script>
+    function showImage(fileName) {
+      const img = document.getElementById("catImage");
+      img.src = fileName;
+      img.style.display = "block";
+    }
+  </script>
+
+</body>
+</html>
