@@ -104,6 +104,9 @@ VPCs are isolated by default, but AWS provides mechanisms for inter-VPC communic
 | Setup              | Individual connections       | Centralized hub-and-spoke      |
 | Best Use Case      | Simple connections           | Enterprise-scale networking    |
 
+You can implement both VPC Peering and Transit Gateway in the same AWS account, but they cannot be used together for the same VPC.
+peering.cft.yaml is a CloudFormation template that can be used to set up VPC Peering connections between two VPCs in the same AWS account. You can upload this template to the AWS CloudFormation console and follow the instructions to create the peering connection.
+transitGateway.cft.yaml is a CloudFormation template that can be used to set up a Transit Gateway in the same AWS account. You can upload this template to the AWS CloudFormation console and follow the instructions to create the Transit Gateway.
 
 ## 🔄 Communication among Different AWS Services
 
